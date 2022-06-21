@@ -3,11 +3,13 @@ import pygame as pg
 pg.init()
 pg.font.init()
 
-window = pg.display.set_mode([1000, 700])
+window = pg.display.set_mode([700, 700])
 pg.display.set_caption("Snake Game")
 
 font = pg.font.SysFont("Lucida Console", 30)
 
-color_indigo = (75, 0, 130)
+color_black = (0, 0, 0)
+color_red = (139,  0, 0)
+color_goldenrod = (218, 165, 32)
 
 score = 0
