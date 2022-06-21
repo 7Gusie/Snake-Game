@@ -1,5 +1,5 @@
 import sys, random
-from snake_assets import pg, window, font, color_black, color_red, color_goldenrod, score
+from snake_assets import pg, window, font, color_black, color_goldenrod, color_red, score
 
 clock = pg.time.Clock()
 
