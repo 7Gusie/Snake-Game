@@ -71,6 +71,18 @@ def main():
         if direction == 'RIGHT':
             snake_position[0] += 10
 
+        snake_size.insert(0, list(snake_position))
+        if snake_position[0] == apple_position[0] and snake_position[1] == apple_position[1]:
+            score += 1
+            apple_spawn = False
+        else:
+            snake_size.pop()
+
+        if not apple_spawn:
+            apple_position = [random.randrange(1, (1200//10)) * 10, random.randrange(1, (900//10)) * 10]
+            apple_spawn = True
+
+
         clock.tick(60)
         pg.display.update()
 
