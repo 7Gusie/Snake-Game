@@ -1,26 +1,26 @@
 import sys, random
-from snake_assets import pg, window, font, color_indigo, score
+from snake_assets import pg, window, font, color_black, color_red, color_goldenrod, score
 
 clock = pg.time.Clock()
 
-black = (0, 0, 0)
+background = pg.image.load("background.png")
+dest = (0, 0)
 
-snake_position = [600, 450]
+snake_position = [100, 50]
 snake_size = [(100, 50), (90, 50), (80, 50)]
 
-apple_position = [random.randrange(1, 100) * 10, random.randrange(1 , 70) * 10] 
+apple_position = [random.randrange(1, 70) * 10, random.randrange(1 , 66) * 10] 
 apple_spawn = True
 
 direction = 'RIGHT'
 change_to = direction
 
-def showScore(option, color_indigo, font):
-    window.blit(font.render("Pontuação: " + str(score), True, color_indigo), (10, 10))
+def showScore(option, color_black, font):
+    window.blit(font.render("Pontuação:" + str(score), True, color_black), (0, 668))
 
 def gameOver():
-    window.fill(black)
-    window.blit(font.render("VOCÊ PERDEU!", True, color_indigo), (300, 300))
-    showScore(1, color_indigo, font)
+    window.blit(font.render("VOCÊ PERDEU!", True, color_black), (300, 300))
+    showScore(1, color_black, font)
 
 while True:
     for event in pg.event.get():
@@ -37,10 +37,7 @@ while True:
                 change_to = "LEFT"
             if event.key == pg.K_d or event.key == pg.K_RIGHT:
                 change_to = "RIGHT"
-            if event.key == pg.K_ESCAPE:
-                pg.quit()
-                sys.exit()
-        
+    
     if change_to == "UP" and direction != "DOWN":
         direction = "UP"
     if change_to == 'DOWN' and direction != 'UP':
@@ -67,25 +64,26 @@ while True:
         snake_size.pop()
 
     if not apple_spawn:
-        apple_position = [random.randrange(1, 100) * 10, random.randrange(1, 70) * 10]
+        apple_position = [random.randrange(1, 70) * 10, random.randrange(1, 70) * 10]
         apple_spawn = True
 
-    window.fill(black)
+    window.blit(background, dest)
+
     for pos in snake_size:
-        pg.draw.rect(window, color_indigo, pg.Rect(pos[0], pos[1], 10, 10))
+        pg.draw.rect(window, color_goldenrod, pg.Rect(pos[0], pos[1], 10, 10))
         
-    pg.draw.rect(window, color_indigo, pg.Rect(apple_position[0], apple_position[1], 10, 10))
+    pg.draw.rect(window, color_red, pg.Rect(apple_position[0], apple_position[1], 10, 10))
         
     if snake_position[0] < 0 or snake_position[0] > 990:
         gameOver()
     if snake_position[1] < 0 or snake_position[1] > 690:
         gameOver()
 
-    for block in snake_size[1:]:
-        if snake_position[0] == block[0] and snake_position[1] == block[1]:
+    for pixel in snake_size[1:]:
+        if snake_position[0] == pixel[0] and snake_position[1] == pixel[1]:
             gameOver()
 
-    showScore(1, color_indigo, font)
+    showScore(1, color_black, font)
 
     clock.tick(20)
     pg.display.update()
