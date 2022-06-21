@@ -9,7 +9,7 @@ pg.display.set_caption("Snake Game")
 font = pg.font.SysFont("Lucida Console", 30)
 
 color_black = (0, 0, 0)
-color_red = (139,  0, 0)
 color_goldenrod = (218, 165, 32)
+color_red = (255, 0, 0)
 
 score = 0
