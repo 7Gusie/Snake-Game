@@ -1,4 +1,3 @@
-from logging.config import RESET_ERROR
 import os, time, pygame as pg
 
 pg.init()
