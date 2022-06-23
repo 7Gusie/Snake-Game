@@ -53,12 +53,12 @@ def backgroundScreen():
 
 def background_gameOverScreen():
     window.blit(background_gameOver, background_position)
-    pg.mixer.music.load("eat_apple_sound.mp3")
+    pg.mixer.music.load("background_gameOver_sound.mp3")
     pg.mixer.music.play(1)
     pg.mixer.music.set_volume(1)
-
+    
 def eatApple():
-    pg.mixer.music.load("background_gameOver_sound.mp3")
+    pg.mixer.music.load("eat_apple_sound.mp3")
     pg.mixer.music.play(1)
     pg.mixer.music.set_volume(1)
 
