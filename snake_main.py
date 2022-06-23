@@ -100,6 +100,7 @@ def gameMain(score, snake_size, snake_position, apple_position, apple_spawn, dir
 
         clock.tick(snake_speed)
         pg.display.update()
+        
 def userGame():
     while True:
         try:
