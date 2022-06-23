@@ -14,7 +14,6 @@ direction = ''
 change_to = direction
 
 def gameMain(score, snake_size, snake_position, apple_position, apple_spawn, direction, change_to):
-
     while True:           
         for event in pg.event.get():
             if event.type == pg.QUIT:
